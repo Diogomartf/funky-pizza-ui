@@ -6,7 +6,7 @@ import ProjectTomatoCard from "./components/ProjectTomatoCard";
 
 export default function Home() {
   return (
-    <div className="font-sans bg-beige">
+    <div className="relative font-sans bg-beige">
       <Head>
         <title>Funky Pizza</title>
         <link
@@ -39,17 +39,20 @@ export default function Home() {
         <div className="space-y-12">
           <div className="flex my-12 space-x-5 overflow-auto">
             {["red", "green", "blue", "purple"].map((color, index) => (
-              <PizzaCard color={color} index={index} />
+              <PizzaCard key={color} color={color} index={index} />
             ))}
           </div>
           <div className="flex flex-col space-y-6 md:space-y-0 md:space-x-5 md:flex-row">
             <ProjectTomatoCard title="Number of Pizzas" text="2205" />
             <ProjectTomatoCard title="Number of Ingredients" text="24" />
-            <ProjectTomatoCard title="Estimated Mint Value" text="0.522" />
+            <ProjectTomatoCard title="Estimated Mint Value" text="0.0522" />
             <ProjectTomatoCard title="Launch Date" text="DEC" />
           </div>
         </div>
-        <div className="flex flex-col justify-between my-32 space-y-6 md:space-y-0 md:flex-row">
+        <div
+          id="about"
+          className="flex flex-col justify-between my-32 space-y-6 md:space-y-0 md:flex-row"
+        >
           <div className="text-xs font-bold md:text-sm text-darkRed">
             About Funky Pizza
           </div>
