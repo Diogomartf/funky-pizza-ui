@@ -8,7 +8,7 @@ const Navbar = () => {
     <>
       <div
         onClick={() => setIsOpen(false)}
-        className={`flex sm:hidden ${isOpen ? "nav-overlay" : "hidden"}`}
+        className={`flex ${isOpen ? "nav-overlay" : "hidden"}`}
       ></div>
       <div
         className={`flex justify-between my-8 z-10 ${
@@ -26,7 +26,9 @@ const Navbar = () => {
           </a>
         )}
         <div
-          className={`flex ${isOpen ? "flex-col-reverse mb-12" : "space-x-16"}`}
+          className={`flex ${
+            isOpen ? "w-full flex-col-reverse mb-12" : "space-x-16"
+          }`}
         >
           <div
             className={`${
@@ -68,16 +70,17 @@ const Navbar = () => {
               />
             </a>
           </div>
-          <div
-            className={`${
-              !isOpen ? "hidden" : "flex mb-12"
-            } space-x-3 md:space-x-5 md:flex`}
-          >
-            <SocialLinks />
+          <div className="flex">
+            <div className={!isOpen ? "hidden md:flex" : "flex"}>
+              <SocialLinks />
+            </div>
+            <div
+              className={!isOpen ? "md:hidden" : "ml-auto"}
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <MenuIcon open={isOpen} />
+            </div>
           </div>
-        </div>
-        <div className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-          <MenuIcon open={isOpen} />
         </div>
       </div>
     </>
