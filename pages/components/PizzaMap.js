@@ -5,7 +5,7 @@ const PizzaMapPhases = ({ title, description }) => (
   </div>
 );
 
-export const PizzaMap = () => (
+const PizzaMap = () => (
   <div
     id="pizzamap"
     className="flex flex-col space-y-6 bg-white pl-8 md:px-8 pb-8 md:pb-16 rounded-2xl -mx-5 md:-mx-0"
@@ -39,3 +39,5 @@ export const PizzaMap = () => (
     </div>
   </div>
 );
+
+export default PizzaMap;

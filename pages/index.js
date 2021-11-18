@@ -3,7 +3,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import PizzaCard from "./components/PizzaCard";
 import ProjectTomatoCard from "./components/ProjectTomatoCard";
-import { PizzaMap } from "./components/PizzaMap";
+import PizzaMap from "./components/PizzaMap";
 
 export default function Home() {
   return (
