@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import PizzaCard from "./components/PizzaCard";
 import ProjectTomatoCard from "./components/ProjectTomatoCard";
+import { PizzaMap } from "./components/PizzaMap";
 
 export default function Home() {
   return (
@@ -34,7 +35,7 @@ export default function Home() {
           rel="stylesheet"
         ></link>
       </Head>
-      <div className="max-w-6xl px-5 py-1 mx-auto md:px-0">
+      <div className="max-w-6xl px-5 py-1 mx-auto">
         <Navbar />
         <div className="space-y-12">
           <div className="flex my-12 -mr-5 space-x-5 overflow-auto md:mr-0">
@@ -67,6 +68,7 @@ export default function Home() {
             crypto.
           </div>
         </div>
+        <PizzaMap />
         <Footer />
       </div>
     </div>
