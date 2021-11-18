@@ -26,7 +26,7 @@ const PizzaMap = () => (
         <div className="flex justify-between space-x-24">
           <PizzaMapPhases
             title="Cooking..."
-            description="Our tasty Pizzas are in the hoven."
+            description="Our tasty Pizzas are in the oven."
           />
           <PizzaMapPhases
             title="Phase 1"
