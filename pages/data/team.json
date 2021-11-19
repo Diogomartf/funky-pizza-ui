@@ -1,0 +1,32 @@
+[
+  {
+    "handler": "berteotti_",
+    "role": "Developer & Community",
+    "name": "leonardo",
+    "color": "red"
+  },
+  {
+    "handler": "claudiafr59",
+    "role": "Developer & Gen algorithm",
+    "name": "claudia",
+    "color": "indigo"
+  },
+  {
+    "handler": "diogomartf",
+    "role": "Developer & Community",
+    "name": "diogo",
+    "color": "green"
+  },
+  {
+    "handler": "nunolezon",
+    "role": "Artist & Designer",
+    "name": "nuno",
+    "color": "purple"
+  },
+  {
+    "handler": "prcsousa",
+    "role": "Advisor",
+    "name": "paulo",
+    "color": "blue"
+  }
+]

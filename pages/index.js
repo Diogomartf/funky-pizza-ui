@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import PizzaCard from "./components/PizzaCard";
 import ProjectTomatoCard from "./components/ProjectTomatoCard";
+import Team from "./components/Team";
 
 export default function Home() {
   return (
@@ -37,7 +38,7 @@ export default function Home() {
       <div className="max-w-6xl px-5 py-1 mx-auto md:px-0">
         <Navbar />
         <div className="space-y-12">
-          <div className="flex my-12 -mr-5 space-x-5 overflow-auto md:mr-0">
+          <div className="flex my-12 -mr-5 space-x-5 overflow-x-auto md:mr-0">
             {["red", "green", "blue", "purple"].map((color, index) => (
               <PizzaCard key={color} color={color} index={index} />
             ))}
@@ -67,6 +68,7 @@ export default function Home() {
             crypto.
           </div>
         </div>
+        <Team />
         <Footer />
       </div>
     </div>
