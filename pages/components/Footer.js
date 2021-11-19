@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="flex items-end justify-between my-8">
+    <div className="flex items-end justify-between my-8 pt-48 space-x-6">
       <img
         src="logo.svg"
         alt="Funky Pizza logo"
