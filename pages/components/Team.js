@@ -1,7 +1,7 @@
 import team from "../data/team.json";
 
 const Team = () => (
-  <div className="flex -mr-5 overflow-x-auto space-x-7 my-28 md:mr-0">
+  <div className="flex -mr-5 space-x-4 overflow-x-auto my-28 md:mr-0">
     {team.map((member) => (
       <div className="flex flex-col items-center" key={member.name}>
         <div className="relative flex mb-3">

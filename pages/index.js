@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import PizzaCard from "./components/PizzaCard";
 import ProjectTomatoCard from "./components/ProjectTomatoCard";
 import Team from "./components/Team";
+import PizzaMap from "./components/PizzaMap";
 
 export default function Home() {
   return (
@@ -29,13 +30,17 @@ export default function Home() {
         />
         <link rel="manifest" href="/site.webmanifest"></link>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Modak&display=swap"
           rel="stylesheet"
         ></link>
       </Head>
-      <div className="max-w-6xl px-5 py-1 mx-auto md:px-0">
+      <div className="max-w-6xl px-5 py-1 mx-auto">
         <Navbar />
         <div className="space-y-12">
           <div className="flex my-12 -mr-5 space-x-5 overflow-x-auto md:mr-0">
@@ -69,6 +74,7 @@ export default function Home() {
           </div>
         </div>
         <Team />
+        <PizzaMap />
         <Footer />
       </div>
     </div>
