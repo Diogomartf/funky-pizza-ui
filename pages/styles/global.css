@@ -14,6 +14,10 @@
   background-color: #eee5ff;
 }
 
+.bg-pastel-indigo {
+  background-color: #d6e1ff;
+}
+
 .nav-overlay {
   background-color: rgba(0, 0, 0, 0.28);
   bottom: 0;
