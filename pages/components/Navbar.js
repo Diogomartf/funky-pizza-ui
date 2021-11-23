@@ -59,16 +59,6 @@ const Navbar = () => {
                 }`}
               />
             </a>
-            <a onClick={() => setIsOpen(false)} href="#faqs" className="group">
-              <p className="mb-2 text-3xl font-semibold uppercase md:font-medium md:text-sm text-darkRed">
-                FAQs
-              </p>
-              <hr
-                className={`border-2 border-tomato/20 group-hover:border-tomato ${
-                  isOpen ? "w-full" : "w-28"
-                }`}
-              />
-            </a>
           </div>
           <div className="flex">
             <div className={!isOpen ? "hidden md:flex" : "flex"}>

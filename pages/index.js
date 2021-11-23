@@ -40,37 +40,43 @@ export default function Home() {
           rel="stylesheet"
         ></link>
       </Head>
-      <div className="max-w-6xl px-5 py-1 mx-auto">
+      <div className="max-w-[70rem] px-5 py-1 mx-auto">
         <Navbar />
         <div className="space-y-12">
-          <div className="flex my-12 -mr-5 space-x-5 overflow-x-auto md:mr-0">
+          <div className="flex justify-between my-12 -mr-5 space-x-5 overflow-x-auto md:space-x-4 md:mr-0">
             {["red", "green", "blue", "purple"].map((color, index) => (
               <PizzaCard key={color} color={color} index={index} />
             ))}
           </div>
-          <div className="flex flex-col space-y-6 md:space-y-0 md:space-x-5 md:flex-row">
+          <div className="flex flex-col justify-between space-y-6 md:space-x-4 md:space-y-0 md:flex-row">
             <ProjectTomatoCard title="Number of Pizzas" text="2205" />
             <ProjectTomatoCard title="Number of Ingredients" text="24" />
-            <ProjectTomatoCard title="Estimated Mint Value" text="0.0522" />
-            <ProjectTomatoCard title="Launch Date" text="DEC" />
+            <ProjectTomatoCard
+              title="Estimated Mint Value (ETH)"
+              text="0.0522"
+            />
+            <ProjectTomatoCard title="Launch Date" text="JAN" />
           </div>
         </div>
         <div
           id="about"
-          className="flex flex-col justify-between my-32 space-y-6 md:space-y-0 md:flex-row"
+          className="flex flex-col justify-between py-32 space-y-6 md:space-y-0 md:flex-row"
         >
           <div className="text-xs font-bold md:text-sm text-darkRed">
             About Funky Pizza
           </div>
           <div className="max-w-3xl text-2xl font-bold md:text-4xl text-darkRed">
-            We are a group of friends that writes software for a living, being
-            fascinated by the crypto space, we were having fun minting NFTs when
-            we ordered <span className="text-orangeCrust">Pizza</span>. This is
-            how it started. In love with generative art and NFTs we thought how
-            can we generate something cool. Something we'd put on our wall, oh,
-            we mean plate. <span className="text-orangeCrust">Pizza</span>{" "}
-            brings us together. It’s culture. World wide. Like, you know,
-            crypto.
+            <p>
+              We are a group of friends that writes and designs software for a
+              living. We were having fun minting NFTs when we ordered 
+              <span className="text-orangeCrust">Pizza</span>. This is how it
+              started. We know we can generate the coolest, weiredest and
+              funkiest pizzas on Ethereum. Something we'd put on our wall.
+            </p>
+            <p>
+              <span className="text-orangeCrust">Pizza</span> brings us
+              together. It’s culture. World wide. Like, you know, crypto.
+            </p>
           </div>
         </div>
         <Team />
