@@ -5,30 +5,16 @@ import PizzaCard from "./components/PizzaCard";
 import ProjectTomatoCard from "./components/ProjectTomatoCard";
 import Team from "./components/Team";
 import PizzaMap from "./components/PizzaMap";
+import MetaTags from "./components/MetaTags";
+import Favicon from "./components/Favicon";
 
 export default function Home() {
   return (
     <div className="relative font-sans bg-beige">
       <Head>
-        <title>Funky Pizza</title>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/site.webmanifest"></link>
+        <title>Funky Pizza | The best pizza on the blockchain</title>
+        <MetaTags />
+        <Favicon />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -70,7 +56,7 @@ export default function Home() {
               We are a group of friends that writes and designs software for a
               living. We were having fun minting NFTs when we ordered 
               <span className="text-orangeCrust">Pizza</span>. This is how it
-              started. We know we can generate the coolest, weiredest and
+              started. We know we can generate the coolest, weirdest and
               funkiest pizzas on Ethereum. Something we'd put on our wall.
             </p>
             <p>
