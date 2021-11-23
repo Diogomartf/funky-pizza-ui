@@ -4,6 +4,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      height: {
+        fit: "fit-content",
+      },
       colors: {
         beige: "#FBE2CC",
         tomato: "#FD5050",

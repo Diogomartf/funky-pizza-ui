@@ -35,7 +35,14 @@ const Navbar = () => {
               !isOpen ? "hidden" : "flex space-y-8"
             } md:space-x-5 md:flex flex-col md:flex-row`}
           >
-            <a onClick={() => setIsOpen(false)} href="#about" className="group">
+            <p className="w-40 text-sm font-semibold md:w-28 text-darkRed md:mx-2 lg:mx-6 xl:mx-8 2xl:mx-12">
+              Tasty collectible NFTs for every pizza lover.
+            </p>
+            <a
+              onClick={() => setIsOpen(false)}
+              href="#about"
+              className="group h-fit"
+            >
               <p className="mb-2 text-3xl font-semibold uppercase md:font-medium md:text-sm text-darkRed">
                 About
               </p>
@@ -48,7 +55,7 @@ const Navbar = () => {
             <a
               onClick={() => setIsOpen(false)}
               href="#pizzamap"
-              className="group"
+              className="group h-fit"
             >
               <p className="mb-2 text-3xl font-semibold uppercase md:font-medium md:text-sm text-darkRed">
                 Pizzamap
