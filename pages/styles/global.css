@@ -1,0 +1,31 @@
+.bg-pastel-red {
+  background-color: #ffdada;
+}
+
+.bg-pastel-green {
+  background-color: #c8f3f1;
+}
+
+.bg-pastel-blue {
+  background-color: #c8def3;
+}
+
+.bg-pastel-purple {
+  background-color: #eee5ff;
+}
+
+.bg-pastel-indigo {
+  background-color: #d6e1ff;
+}
+
+.nav-overlay {
+  background-color: rgba(0, 0, 0, 0.28);
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
