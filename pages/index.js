@@ -46,7 +46,7 @@ export default function Home() {
         </div>
         <div
           id="about"
-          className="flex flex-col justify-between py-32 space-y-6 md:space-y-0 md:flex-row"
+          className="flex flex-col justify-between my-24 space-y-6 md:mt-0 md:pt-32 md:mb-32 md:space-y-0 md:flex-row"
         >
           <div className="text-xs font-bold md:text-sm text-darkRed">
             About Funky Pizza
@@ -55,9 +55,10 @@ export default function Home() {
             <p>
               We are a group of friends that writes and designs software for a
               living. We were having fun minting NFTs when we ordered 
-              <span className="text-orangeCrust">Pizza</span>. This is how it
-              started. We know we can generate the coolest, weirdest and
-              funkiest pizzas on Ethereum. Something we'd put on our wall.
+              <span className="text-orangeCrust">Pizza</span>. A thought came,
+              we can generate the coolest, weirdest and funkiest pizzas on the
+              blockchain. Something we'd put on our wall. This is how it
+              started.
             </p>
             <p>
               <span className="text-orangeCrust">Pizza</span> brings us

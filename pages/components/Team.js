@@ -2,7 +2,7 @@ import Image from "next/image";
 import team from "../data/team.json";
 
 const Team = () => (
-  <div className="flex justify-between -mr-5 space-x-5 overflow-x-auto my-28 md:mr-0">
+  <div className="flex justify-between my-24 -mr-5 space-x-5 overflow-x-auto md:my-28 md:mr-0">
     {team.map((member) => (
       <div className="flex flex-col items-center" key={member.name}>
         <div className="relative flex mb-3">

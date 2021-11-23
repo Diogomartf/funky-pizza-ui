@@ -6,7 +6,7 @@ const MetaTags = () => (
     />
     <meta
       name="description"
-      content="Tasty collectible NFTs for every pizza lover."
+      content="2205 tasty collectible NFTs for every pizza lover."
     />
 
     {/* <!-- Open Graph / Facebook --> */}
@@ -15,7 +15,7 @@ const MetaTags = () => (
     <meta property="og:title" content="Funky Pizza" />
     <meta
       property="og:description"
-      content="Tasty collectible NFTs for every pizza lover."
+      content="2205 tasty collectible NFTs for every pizza lover."
     />
     <meta property="og:image" content="/funky-cover.jpg" />
 
@@ -25,7 +25,7 @@ const MetaTags = () => (
     <meta property="twitter:title" content="Funky Pizza" />
     <meta
       property="twitter:description"
-      content="Tasty collectible NFTs for every pizza lover."
+      content="2205 tasty collectible NFTs for every pizza lover."
     />
     <meta property="twitter:image" content="/funky-cover.jpg"></meta>
   </>
