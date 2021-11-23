@@ -2,8 +2,7 @@ import { useState } from "react";
 import MenuIcon from "./MenuIcon";
 import SocialLinks from "./SocialLinks";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const Navbar = ({ isOpen, setIsOpen }) => {
   return (
     <>
       <div

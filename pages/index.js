@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Head from "next/head";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -7,8 +8,11 @@ import Team from "./components/Team";
 import PizzaMap from "./components/PizzaMap";
 import MetaTags from "./components/MetaTags";
 import Favicon from "./components/Favicon";
+import About from "./components/About";
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="relative font-sans bg-beige">
       <Head>
@@ -27,8 +31,8 @@ export default function Home() {
         ></link>
       </Head>
       <div className="max-w-[70rem] px-5 py-1 mx-auto">
-        <Navbar />
-        <div className="space-y-12">
+        <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
+        <div className={`space-y-12 ${isOpen && "pt-[133px] md:pt-0"}`}>
           <div className="flex justify-between my-12 -mr-5 space-x-5 overflow-x-auto md:space-x-4 md:mr-0">
             {["red", "green", "blue", "purple"].map((color, index) => (
               <PizzaCard key={color} color={color} index={index} />
@@ -44,28 +48,7 @@ export default function Home() {
             <ProjectTomatoCard title="Launch Date" text="JAN" />
           </div>
         </div>
-        <div
-          id="about"
-          className="flex flex-col justify-between my-24 space-y-6 md:mt-0 md:pt-32 md:mb-32 md:space-y-0 md:flex-row"
-        >
-          <div className="text-xs font-bold md:text-sm text-darkRed">
-            About Funky Pizza
-          </div>
-          <div className="max-w-3xl text-2xl font-bold md:text-4xl text-darkRed">
-            <p>
-              We are a group of friends that writes and designs software for a
-              living. We were having fun minting NFTs when we ordered 
-              <span className="text-orangeCrust">Pizza</span>. A thought came,
-              we can generate the coolest, weirdest and funkiest pizzas on the
-              blockchain. Something we'd put on our wall. This is how it
-              started.
-            </p>
-            <p>
-              <span className="text-orangeCrust">Pizza</span> brings us
-              together. It’s culture. World wide. Like, you know, crypto.
-            </p>
-          </div>
-        </div>
+        <About />
         <Team />
         <PizzaMap />
         <Footer />
