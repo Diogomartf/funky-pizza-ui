@@ -3,7 +3,7 @@ import Icon from "./Icon";
 const SocialLinks = () => {
   return (
     <div className="flex mb-12 space-x-3 md:space-x-5">
-      <Icon link="https://discord.gg/PYEVV7Hp">
+      <Icon link="https://discord.gg/F96AUPdd">
         <svg
           width="32"
           height="32"
