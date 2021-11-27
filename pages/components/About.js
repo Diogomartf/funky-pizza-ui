@@ -1,12 +1,12 @@
 const About = () => (
   <div
     id="about"
-    className="flex flex-col justify-between pt-24 mb-24 space-y-6 md:mt-0 md:pt-32 md:mb-32 md:space-y-0 md:flex-row"
+    className="flex flex-col justify-between pt-24 mb-24 space-y-6 lg:mt-0 lg:pt-32 lg:mb-32 lg:space-y-0 lg:flex-row"
   >
-    <div className="text-xs font-bold md:text-sm text-darkRed">
+    <div className="text-xs font-bold lg:text-sm text-darkRed">
       About Funky Pizza
     </div>
-    <div className="max-w-3xl text-2xl font-bold md:text-4xl text-darkRed">
+    <div className="max-w-3xl text-2xl font-bold lg:text-4xl text-darkRed">
       <p>
         We are a group of friends that writes and designs software for a living.
         We were having fun minting NFTs when we ordered 

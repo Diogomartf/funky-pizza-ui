@@ -29,3 +29,11 @@
   width: 100%;
   z-index: 2;
 }
+
+@media (max-width: 680px) {
+  .horizontal-list::after {
+    content: "";
+    display: inline-block;
+    padding-right: 20px;
+  }
+}
