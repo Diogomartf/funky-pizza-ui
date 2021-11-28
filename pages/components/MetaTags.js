@@ -39,7 +39,7 @@ const MetaTags = () => (
     <meta
       property="twitter:image"
       content="https://www.funky.pizza/funky-cover.jpg"
-    ></meta>
+    />
   </>
 );
 
