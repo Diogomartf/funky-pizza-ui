@@ -9,6 +9,7 @@ import PizzaMap from "./components/PizzaMap";
 import MetaTags from "./components/MetaTags";
 import Favicon from "./components/Favicon";
 import About from "./components/About";
+import Wallet from "./components/Wallet";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,6 +41,7 @@ export default function Home() {
               ))}
             </div>
           </div>
+          <Wallet />
           <div className="flex flex-col justify-between space-y-6 overflow-auto md:space-x-4 md:space-y-0 md:flex-row">
             <ProjectTomatoCard title="Number of Pizzas" text="2205" />
             <ProjectTomatoCard title="Number of Ingredients" text="24" />
