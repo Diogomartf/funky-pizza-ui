@@ -10,6 +10,7 @@ import MetaTags from "./components/MetaTags";
 import Favicon from "./components/Favicon";
 import About from "./components/About";
 import Wallet from "./components/Wallet";
+import { Toaster } from "react-hot-toast";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +33,7 @@ export default function Home() {
         ></link>
       </Head>
       <div className="max-w-[70rem] px-5 py-1 mx-auto">
+        <Toaster position="bottom-center" />
         <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
         <div className={`space-y-12 ${isOpen && "pt-[133px] md:pt-0"}`}>
           <div className="pr-5 -mx-5">

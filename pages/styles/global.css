@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .bg-pastel-red {
   background-color: #ffdada;
 }
