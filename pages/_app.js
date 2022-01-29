@@ -1,8 +1,7 @@
+import { Provider, NETWORKS } from "@web3-ui/hooks";
+import Navbar from "./components/Navbar";
 import "tailwindcss/tailwind.css";
 import "./styles/global.css";
-import { Provider, NETWORKS } from "@web3-ui/hooks";
-import { useState } from "react";
-import Navbar from "./components/Navbar";
 
 function MyApp({ Component, pageProps }) {
   return (
