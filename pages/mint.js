@@ -1,9 +1,13 @@
+import { useState } from "react";
 import Head from "next/head";
 import MetaTags from "./components/MetaTags";
 import Favicon from "./components/Favicon";
 import MintSection from "./components/MintSection";
+import Navbar from "./components/Navbar";
 
 export default function Mint() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div>
       <Head>
@@ -21,6 +25,7 @@ export default function Mint() {
           rel="stylesheet"
         ></link>
       </Head>
+      <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className="max-w-[70rem] px-5 py-1 mx-auto">
         <MintSection />
       </div>

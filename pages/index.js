@@ -30,6 +30,7 @@ export default function Home() {
           rel="stylesheet"
         ></link>
       </Head>
+      <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className={`space-y-12 ${isOpen && "pt-[133px] md:pt-0"}`}>
         <div className="pr-5 -mx-5">
           <div className="flex justify-between pl-5 my-12 -mr-5 space-x-5 overflow-x-auto xl:overflow-hidden xl:mr-0 horizontal-list">

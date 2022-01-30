@@ -1,5 +1,4 @@
 import { Provider, NETWORKS } from "@web3-ui/hooks";
-import Navbar from "./components/Navbar";
 import "tailwindcss/tailwind.css";
 import "./styles/global.css";
 
@@ -11,7 +10,6 @@ function MyApp({ Component, pageProps }) {
     >
       <div className="relative font-sans bg-beige">
         <div className="max-w-[70rem] px-5 py-1 mx-auto">
-          <Navbar />
           <Component {...pageProps} />
         </div>
       </div>

@@ -1,12 +1,9 @@
-import { useState } from "react";
 import MenuIcon from "./MenuIcon";
 import SocialLinks from "./SocialLinks";
 import Link from "next/link";
 import ConnectWallet from "./ConnectWallet";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const Navbar = ({ isOpen, setIsOpen }) => {
   return (
     <>
       <div
