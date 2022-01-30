@@ -1,6 +1,7 @@
-import { useState } from "react";
 import MenuIcon from "./MenuIcon";
 import SocialLinks from "./SocialLinks";
+import Link from "next/link";
+import ConnectWallet from "./ConnectWallet";
 
 const Navbar = ({ isOpen, setIsOpen }) => {
   return (
@@ -16,13 +17,13 @@ const Navbar = ({ isOpen, setIsOpen }) => {
         }`}
       >
         {!isOpen && (
-          <a href="/">
+          <Link href="/">
             <img
               src="logo.svg"
               alt="Funky Pizza logo"
               className="w-48 md:w-56 lg:w-64"
             />
-          </a>
+          </Link>
         )}
         <div
           className={`flex ${
@@ -65,6 +66,7 @@ const Navbar = ({ isOpen, setIsOpen }) => {
                 }`}
               />
             </a>
+            <ConnectWallet />
           </div>
           <div className="flex">
             <div className={!isOpen ? "hidden md:flex" : "flex"}>

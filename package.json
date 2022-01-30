@@ -6,7 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "ethers": "^5.5.2",
+    "@web3-ui/hooks": "^0.9.0",
+    "ethers": "^5.5.3",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
