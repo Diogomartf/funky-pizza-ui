@@ -7,7 +7,7 @@ const Team = () => (
       {team.map((member) => (
         <div className="flex flex-col items-center" key={member.name}>
           <div className="relative flex mb-3">
-            <div className="z-10 flex items-center justify-center border-4 rounded-full w-28 h-28 border-beige bg-tomato">
+            <div className="z-10 flex items-center justify-center w-32 h-32 border-4 rounded-full border-beige bg-tomato">
               <Image
                 src={`/team/${member.name}.webp`}
                 alt={`${member.name} memoji`}
@@ -16,7 +16,7 @@ const Team = () => (
               />
             </div>
             <div
-              className={`w-28 h-28 -ml-12 border-4 rounded-full border-beige bg-pastel-${member.color}`}
+              className={`w-32 h-32 -ml-12 border-4 rounded-full border-beige bg-pastel-${member.color}`}
             >
               <Image
                 src={`/team/${member.name}-pizza.png`}

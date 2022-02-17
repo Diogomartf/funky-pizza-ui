@@ -6,17 +6,20 @@ const About = () => (
     <div className="text-xs font-bold lg:text-sm text-darkRed">
       About Funky Pizza
     </div>
-    <div className="max-w-3xl text-2xl font-bold lg:text-4xl text-darkRed">
-      <p>
-        We are a group of friends that writes and designs software for a living.
-        We were having fun minting NFTs when we ordered 
-        <span className="text-orangeCrust">Pizza</span>. A thought came, we can
-        generate the coolest, weirdest and funkiest pizzas on the blockchain.
-        Something we'd put on our wall. This is how it started.
+    <div className="max-w-3xl space-y-6 text-xl font-bold lg:text-3xl text-darkRed">
+      <p className="md:leading-9">
+        Funky Pizza is a NFT project of algorithmically generated{" "}
+        <span className="text-orangeCrust">pizzas</span>, on the Ethereum
+        blockchain.
       </p>
-      <p>
-        <span className="text-orangeCrust">Pizza</span> brings us together. It’s
-        culture. World wide. Like, you know, crypto.
+      <p className="md:leading-9">
+        By owning Funky Pizza you can be part of the community and decide the
+        future of the project. We will make Funky Pizza part of the{" "}
+        <span className="text-orangeCrust">pizza</span> culture.
+      </p>
+      <p className="md:leading-9">
+        The recipe of the <span className="text-orangeCrust">pizzas</span>{" "}
+        include different doughs, sauces, cheeses and bunch of funky toppings.
       </p>
     </div>
   </div>
