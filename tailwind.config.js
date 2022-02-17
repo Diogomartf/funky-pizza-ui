@@ -11,6 +11,7 @@ module.exports = {
         beige: "#FBE2CC",
         tomato: "#FD5050",
         darkRed: "#D61818",
+        orangy: "#FFC989",
         orangeCrust: "#FF8D23",
       },
       fontFamily: {

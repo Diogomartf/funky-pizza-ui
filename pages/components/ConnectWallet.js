@@ -1,6 +1,31 @@
 import { useWallet } from "@web3-ui/hooks";
 import Link from "next/link";
 
+const CrustyButton = ({ onClick, children }) => (
+  <button
+    className="p-3 text-sm font-medium text-white uppercase transition rounded-full bg-gradient-to-r from-orangy to-orangeCrust hover:drop-shadow-lg hover:duration-200 h-fit"
+    onClick={onClick}
+  >
+    {children}
+  </button>
+);
+
+const WalletAddress = ({ connection }) => (
+  <div className="p-1 ml-2 bg-white rounded-full">
+    <p class="font-mono text-xs text-gray-700 normal-case">
+      {connection.ens
+        ? connection.ens
+        : `
+    ${connection.userAddress.substring(
+      0,
+      4
+    )}...${connection.userAddress.substring(
+            connection.userAddress.length - 4
+          )}`}
+    </p>
+  </div>
+);
+
 export default function ConnectWallet() {
   const {
     connection,
@@ -12,46 +37,25 @@ export default function ConnectWallet() {
 
   if (!correctNetwork)
     return (
-      <div>
-        <button
-          className="py-4 px-6 text-white rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 uppercase whitespace-nowrap drop-shadow-md hover:drop-shadow-lg transition duration-0 hover:duration-500"
-          onClick={switchToCorrectNetwork}
-        >
-          Switch Network
-        </button>
-      </div>
+      <CrustyButton onClick={switchToCorrectNetwork}>
+        {" "}
+        Switch Network
+      </CrustyButton>
     );
 
   if (connected)
     return (
       connection.userAddress && (
         <Link href="/mint">
-          <button className="flex justify-center items-center py-2 pl-6 pr-3 text-white rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 uppercase whitespace-nowrap h-fit drop-shadow-md hover:drop-shadow-lg transition duration-0 hover:duration-500">
-            Mint
-            <div className="p-3 text-black rounded-full bg-white ml-2 text-xs normal-case">
-              {connection.ens
-                ? connection.ens
-                : `
-    ${connection.userAddress.substring(
-      0,
-      4
-    )}...${connection.userAddress.substring(
-                    connection.userAddress.length - 4
-                  )}`}
+          <CrustyButton>
+            <div className="flex items-center space-x-2">
+              Mint
+              <WalletAddress connection={connection} />
             </div>
-          </button>
+          </CrustyButton>
         </Link>
       )
     );
 
-  return (
-    <div>
-      <button
-        className="py-4 px-6 text-white rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 uppercase whitespace-nowrap drop-shadow-md hover:drop-shadow-lg transition duration-0 hover:duration-500"
-        onClick={connectWallet}
-      >
-        Connect wallet
-      </button>
-    </div>
-  );
+  return <CrustyButton onClick={connectWallet}>Connect wallet</CrustyButton>;
 }
