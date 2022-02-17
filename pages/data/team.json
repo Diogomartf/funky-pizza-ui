@@ -22,11 +22,5 @@
     "role": "Artist & Designer",
     "name": "nuno",
     "color": "purple"
-  },
-  {
-    "handler": "prcsousa",
-    "role": "Advisor",
-    "name": "paulo",
-    "color": "blue"
   }
 ]
