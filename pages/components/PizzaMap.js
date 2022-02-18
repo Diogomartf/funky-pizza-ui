@@ -35,11 +35,17 @@ const PizzaMap = () => (
                 description="Our tasty Pizzas are in the oven."
               />
               <PizzaMapPhases
-                title="Phase 1"
-                description="Launch our 2205 collectible pizzas. Aiming for January."
+                title="Serving"
+                description="Launch our 2205 collectible pizzas. Aiming for early March."
               />
-              <PizzaMapPhases title="Phase 2" description="TBD" />
-              <PizzaMapPhases title="Phase 3" description="TBD" />
+              <PizzaMapPhases
+                title="Eating"
+                description="Make pizza related apps that will increase the value of the brand. Make partnerships with pizza brands."
+              />
+              <PizzaMapPhases
+                title="More pizza"
+                description="What the community feels right, with pizza of course."
+              />
             </div>
           </div>
         </div>

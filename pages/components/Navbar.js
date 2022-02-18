@@ -27,7 +27,7 @@ const Navbar = ({ isOpen, setIsOpen }) => {
               <img
                 src="logo.svg"
                 alt="Funky Pizza logo"
-                className="w-48 md:w-56"
+                className="w-48 cursor-pointer md:w-56"
               />
             </Link>
             <p className="hidden w-40 ml-2 text-sm font-semibold md:block md:w-28 text-darkRed md:mx-2 lg:mx-6 xl:mx-8 2xl:mx-12">
