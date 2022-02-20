@@ -12,7 +12,7 @@ const CrustyButton = ({ onClick, children }) => (
 
 const WalletAddress = ({ connection }) => (
   <div className="p-1 ml-2 bg-white rounded-full">
-    <p class="font-mono text-xs text-gray-700 normal-case">
+    <p className="font-mono text-xs text-gray-700 normal-case">
       {connection.ens
         ? connection.ens
         : `

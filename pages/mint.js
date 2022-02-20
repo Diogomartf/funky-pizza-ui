@@ -2,8 +2,8 @@ import { useState } from "react";
 import Head from "next/head";
 import MetaTags from "./components/MetaTags";
 import Favicon from "./components/Favicon";
-import MintSection from "./components/MintSection";
 import Navbar from "./components/Navbar";
+import MintSection from "./components/MintSection";
 
 export default function Mint() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +11,7 @@ export default function Mint() {
   return (
     <div>
       <Head>
-        <title>Funky Pizza | The best pizza on the blockchain</title>
+        <title>Mint a Funky Pizza | The best pizza on the blockchain</title>
         <MetaTags />
         <Favicon />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,9 +26,7 @@ export default function Mint() {
         ></link>
       </Head>
       <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
-      <div className="max-w-[70rem] px-5 py-1 mx-auto">
-        <MintSection />
-      </div>
+      <MintSection />
     </div>
   );
 }

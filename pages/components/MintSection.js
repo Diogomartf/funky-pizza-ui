@@ -1,62 +1,31 @@
-import { useState, useEffect } from "react";
-import { useContract, useReadOnlyContract } from "@web3-ui/hooks";
-import funkyPizzaABI from "../abi/FunkyPizza";
-import { ethers } from "ethers";
-import MintForm from "./MintForm";
+import MintCard from "./MintCard";
 
 export default function MintSection() {
-  const [maxSupply, setMaxSupply] = useState("-");
-  const [totalSupply, setTotalSupply] = useState("-");
-  const [mintPrice, setMintPrice] = useState("-");
-  const [maxPerMint, setMaxPerMint] = useState(1);
-
-  const [readOnlyFunkyPizzaContract, isReadOnlyFunkyPizzaContract] =
-    useReadOnlyContract(
-      process.env.NEXT_PUBLIC_FUNKY_PIZZA_ADDRESS,
-      funkyPizzaABI.abi
-    );
-  const [funkyPizzaContract, isReady] = useContract(
-    process.env.NEXT_PUBLIC_FUNKY_PIZZA_ADDRESS,
-    funkyPizzaABI.abi
-  );
-
-  const fetchData = async () => {
-    const [maxSupply, totalSupply, mintPrice, maxPerMint] = await Promise.all([
-      await readOnlyFunkyPizzaContract.max_supply(),
-      await readOnlyFunkyPizzaContract.totalSupply(),
-      await readOnlyFunkyPizzaContract.price(),
-      await readOnlyFunkyPizzaContract.maxPerMint(),
-    ]);
-    setMaxSupply(maxSupply.toString());
-    setTotalSupply(totalSupply.toString());
-    setMintPrice(ethers.utils.formatEther(mintPrice.toString()));
-    setMaxPerMint(maxPerMint.toString());
-  };
-
-  useEffect(() => {
-    if (
-      isReadOnlyFunkyPizzaContract &&
-      readOnlyFunkyPizzaContract &&
-      Object.entries(readOnlyFunkyPizzaContract).length > 0
-    ) {
-      fetchData();
-    }
-  }, [readOnlyFunkyPizzaContract]);
-
   return (
-    <div className="flex flex-col p-8 space-y-6 rounded-xl bg-white max-w-min min-w-min mx-auto">
-      <div className="flex justify-between text-tomato">
-        <div>Mint a Funky Pizza</div>
-        <div>ETH</div>
+    <div className="relative pb-24 mb-48 md:pb-0 rounded-xl bg-white md:bg-[url('/mint-bg.svg')] h-full w-full bg-cover	bg-center">
+      <div className="md:py-4 lg:py-6 xl:py-7">
+        <div className="max-w-xs pt-8 pb-12 mx-auto text-center 2xs:pb-20 xs:pb-24 md:pb-4 md:pt-0">
+          <p className="text-2xl font-semibold text-orangeCrust md:text-white md:opacity-95">
+            Get your Pizza.
+          </p>
+          <p className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orangy to-orangeCrust md:text-white opacity-90 md:opacity-60">
+            Bacon? Aubergine?
+          </p>
+          <p className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orangy to-orangeCrust md:text-white opacity-90 md:opacity-60">
+            Gold? ETH? Who knows.
+          </p>
+        </div>
+        <div className="relative flex flex-col items-center justify-center">
+          <img
+            src="/bg-mint-mobile.png"
+            alt="pizza mint background"
+            className="absolute max-w-[110%] 2xs:max-w-[98%] xs:max-w-[82%] sm:max-w-[62%] md:hidden md:-z-10"
+          />
+          <div className="z-10 md:z-0">
+            <MintCard />
+          </div>
+        </div>
       </div>
-      <div className="text-center text-tomato text-7xl md:text-8xl font-modak">
-        {mintPrice}
-      </div>
-      <MintForm
-        mintPrice={mintPrice}
-        maxPerMint={maxPerMint}
-        contract={funkyPizzaContract}
-      />
     </div>
   );
 }

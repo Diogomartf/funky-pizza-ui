@@ -1,8 +1,17 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   mode: "jit",
-  purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
+    screens: {
+      "2xs": "380px",
+      xs: "475px",
+      ...defaultTheme.screens,
+    },
     extend: {
       height: {
         fit: "fit-content",
@@ -19,9 +28,6 @@ module.exports = {
         modak: ["Modak", "cursive"],
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };
