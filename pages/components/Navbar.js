@@ -16,7 +16,7 @@ const Navbar = ({ isOpen, setIsOpen }) => {
         className={`flex ${isOpen ? "nav-overlay" : "hidden"}`}
       ></div>
       <div
-        className={`flex justify-between my-8 z-10 ${
+        className={`flex justify-between my-8 z-20 ${
           isOpen &&
           "bg-white w-full -mx-5 -mt-2 px-5 pb-8 pt-[40px] rounded-b-2xl absolute"
         }`}
@@ -45,10 +45,10 @@ const Navbar = ({ isOpen, setIsOpen }) => {
               !isOpen ? "hidden" : "flex space-y-8"
             } md:space-x-3 md:flex flex-col md:flex-row`}
           >
-            <NavButton href="#about" onClick={() => setIsOpen(false)}>
+            <NavButton href="/#about" onClick={() => setIsOpen(false)}>
               About
             </NavButton>
-            <NavButton href="#pizzamap" onClick={() => setIsOpen(false)}>
+            <NavButton href="/#pizzamap" onClick={() => setIsOpen(false)}>
               Pizzamap
             </NavButton>
             <div className="relative hidden space-y-2 md:block">
