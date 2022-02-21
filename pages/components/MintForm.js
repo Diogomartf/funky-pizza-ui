@@ -56,7 +56,7 @@ const QuantityInput = ({ increment, decrement, mintAmount }) => (
 );
 
 export default function MintForm({ contract, mintPrice, maxPerMint }) {
-  const { connected, correctNetwork } = useWallet();
+  const { connected, connectWallet, correctNetwork } = useWallet();
   const [mintAmount, setMintAmount] = useState(1);
   const [lastTransaction, setLastTransaction] = useState(null);
   const increment = () =>
@@ -88,9 +88,9 @@ export default function MintForm({ contract, mintPrice, maxPerMint }) {
           mintAmount={mintAmount}
         />
         <button
-          onClick={mintNFT}
+          onClick={connected ? mintNFT : connectWallet}
           className="flex px-6 py-4 text-white uppercase rounded-full cursor-pointer bg-gradient-to-r from-orangy to-orangeCrust hover:drop-shadow-lg hover:duration-200 h-fit"
-          disabled={!connected || !correctNetwork}
+          disabled={!correctNetwork}
         >
           {loading && (
             <svg
