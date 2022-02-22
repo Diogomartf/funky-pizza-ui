@@ -64,18 +64,19 @@ export default function MintForm({ contract, mintPrice, maxPerMint }) {
 
   const decrement = () => mintAmount > 1 && setMintAmount(mintAmount - 1);
 
-  const [execute, loading, mintError] = useTransaction(contract?.mint);
-
+  const [execute, loading, error] = useTransaction(contract?.mint);
   const mintNFT = async () => {
     if (connected && correctNetwork) {
-      const transcation = await execute([
+      const transaction = await execute([
         mintAmount,
         {
           value: ethers.utils.parseEther((mintPrice * mintAmount).toString()),
         },
       ]);
 
-      setLastTransaction(transcation);
+      if (!transaction.code) {
+        setLastTransaction(transaction);
+      }
     }
   };
 
@@ -118,13 +119,20 @@ export default function MintForm({ contract, mintPrice, maxPerMint }) {
         </button>
       </div>
       {lastTransaction && (
-        <a
-          href={`https://rinkeby.etherscan.io/tx/${lastTransaction.hash}`}
-          className="text-black"
-          target="_blank"
-        >
-          Your Funky Pizza transaction
-        </a>
+        <div className="flex items-center">
+          <a
+            href={`https://rinkeby.etherscan.io/tx/${lastTransaction.hash}`}
+            className="px-2 py-1 mx-auto text-xs text-gray-600 bg-gray-200 rounded-2xl hover:drop-shadow-lg hover:duration-200"
+            target="_blank"
+          >
+            Check transaction
+          </a>
+        </div>
+      )}
+      {error && (
+        <div className="px-2 py-1 mx-auto text-xs text-red-700 bg-red-100 rounded w-fit">
+          {error.error?.message || error?.message}
+        </div>
       )}
     </>
   );
