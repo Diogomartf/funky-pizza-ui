@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { useTransaction, useWallet } from "@web3-ui/hooks";
-import { ethers } from "ethers";
+import { useWallet } from "@web3-ui/hooks";
 
 const QuantityInput = ({ increment, decrement, mintAmount }) => (
   <div className="flex items-center p-2 space-x-2 bg-white rounded-full drop-shadow-md">
@@ -55,30 +53,16 @@ const QuantityInput = ({ increment, decrement, mintAmount }) => (
   </div>
 );
 
-export default function MintForm({ contract, mintPrice, maxPerMint }) {
+export default function MintForm({
+  mintNFT,
+  lastTransaction,
+  error,
+  loading,
+  increment,
+  decrement,
+  mintAmount,
+}) {
   const { connected, connectWallet, correctNetwork } = useWallet();
-  const [mintAmount, setMintAmount] = useState(1);
-  const [lastTransaction, setLastTransaction] = useState(null);
-  const increment = () =>
-    mintAmount < maxPerMint && setMintAmount(mintAmount + 1);
-
-  const decrement = () => mintAmount > 1 && setMintAmount(mintAmount - 1);
-
-  const [execute, loading, error] = useTransaction(contract?.mint);
-  const mintNFT = async () => {
-    if (connected && correctNetwork) {
-      const transaction = await execute([
-        mintAmount,
-        {
-          value: ethers.utils.parseEther((mintPrice * mintAmount).toString()),
-        },
-      ]);
-
-      if (!transaction.code) {
-        setLastTransaction(transaction);
-      }
-    }
-  };
 
   return (
     <>
