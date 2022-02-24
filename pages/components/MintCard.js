@@ -79,25 +79,38 @@ export default function MintCard() {
       {loading ? (
         <LoadingOverCard></LoadingOverCard>
       ) : (
-        <div className="flex flex-col p-4 mx-auto space-y-6 bg-white border shadow md:mb-0 lg:mb-0 md:p-8 rounded-xl max-w-min min-w-min">
-          <div className="flex justify-between text-tomato">
-            <div className="text-sm font-semibold">Mint a Funky Pizza</div>
-            <div className="text-sm font-semibold">ETH</div>
-          </div>
-          <div className="text-center text-7xl text-tomato md:text-8xl font-modak">
-            {mintPrice}
-          </div>
-          <MintForm
-            increment={increment}
-            decrement={decrement}
-            mintAmount={mintAmount}
-            mintPrice={mintPrice}
-            maxPerMint={maxPerMint}
-            mintNFT={mintNFT}
-            loading={loading}
-            error={error}
-            lastTransaction={lastTransaction}
-          />
+        <div>
+          {lastTransaction ? (
+            <div className="flex items-end justify-center p-4 mx-auto bg-[url('/pizza-leds.jpeg')] shadow w-60 h-52 md:w-80 md:h-64 md:mb-0 lg:mb-0 md:p-8 rounded-xl bg-center bg-cover ">
+              <a
+                href={`https://rinkeby.etherscan.io/tx/${lastTransaction.hash}`}
+                className="p-2 px-4 mx-auto text-xs text-white bg-gradient-to-r from-orangy to-orangeCrust hover:drop-shadow-lg hover:duration-200 rounded-2xl"
+                target="_blank"
+              >
+                Check transaction
+              </a>
+            </div>
+          ) : (
+            <div className="flex flex-col p-4 mx-auto space-y-6 bg-white border shadow md:mb-0 lg:mb-0 md:p-8 rounded-xl max-w-min min-w-min">
+              <div className="flex justify-between text-tomato">
+                <div className="text-sm font-semibold">Mint a Funky Pizza</div>
+                <div className="text-sm font-semibold">ETH</div>
+              </div>
+              <div className="text-center text-7xl text-tomato md:text-8xl font-modak">
+                {mintPrice}
+              </div>
+              <MintForm
+                increment={increment}
+                decrement={decrement}
+                mintAmount={mintAmount}
+                mintPrice={mintPrice}
+                maxPerMint={maxPerMint}
+                mintNFT={mintNFT}
+                loading={loading}
+                error={error}
+              />
+            </div>
+          )}
         </div>
       )}
     </div>

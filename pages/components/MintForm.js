@@ -55,7 +55,6 @@ const QuantityInput = ({ increment, decrement, mintAmount }) => (
 
 export default function MintForm({
   mintNFT,
-  lastTransaction,
   error,
   loading,
   increment,
@@ -102,17 +101,6 @@ export default function MintForm({
           {!loading && "Mint"}
         </button>
       </div>
-      {lastTransaction && (
-        <div className="flex items-center">
-          <a
-            href={`https://rinkeby.etherscan.io/tx/${lastTransaction.hash}`}
-            className="px-2 py-1 mx-auto text-xs text-gray-600 bg-gray-200 rounded-2xl hover:drop-shadow-lg hover:duration-200"
-            target="_blank"
-          >
-            Check transaction
-          </a>
-        </div>
-      )}
       {error && (
         <div className="px-2 py-1 mx-auto text-xs text-red-700 bg-red-100 rounded w-fit">
           {error.error?.message || error?.message}
