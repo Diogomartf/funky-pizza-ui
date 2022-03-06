@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { useTransaction, useWallet } from "@web3-ui/hooks";
-import { ethers } from "ethers";
+import { useWallet } from "@web3-ui/hooks";
 
 const QuantityInput = ({ increment, decrement, mintAmount }) => (
   <div className="flex items-center p-2 space-x-2 bg-white rounded-full drop-shadow-md">
@@ -55,30 +53,15 @@ const QuantityInput = ({ increment, decrement, mintAmount }) => (
   </div>
 );
 
-export default function MintForm({ contract, mintPrice, maxPerMint }) {
+export default function MintForm({
+  mintNFT,
+  error,
+  loading,
+  increment,
+  decrement,
+  mintAmount,
+}) {
   const { connected, connectWallet, correctNetwork } = useWallet();
-  const [mintAmount, setMintAmount] = useState(1);
-  const [lastTransaction, setLastTransaction] = useState(null);
-  const increment = () =>
-    mintAmount < maxPerMint && setMintAmount(mintAmount + 1);
-
-  const decrement = () => mintAmount > 1 && setMintAmount(mintAmount - 1);
-
-  const [execute, loading, error] = useTransaction(contract?.mint);
-  const mintNFT = async () => {
-    if (connected && correctNetwork) {
-      const transaction = await execute([
-        mintAmount,
-        {
-          value: ethers.utils.parseEther((mintPrice * mintAmount).toString()),
-        },
-      ]);
-
-      if (!transaction.code) {
-        setLastTransaction(transaction);
-      }
-    }
-  };
 
   return (
     <>
@@ -118,17 +101,6 @@ export default function MintForm({ contract, mintPrice, maxPerMint }) {
           {!loading && "Mint"}
         </button>
       </div>
-      {lastTransaction && (
-        <div className="flex items-center">
-          <a
-            href={`https://rinkeby.etherscan.io/tx/${lastTransaction.hash}`}
-            className="px-2 py-1 mx-auto text-xs text-gray-600 bg-gray-200 rounded-2xl hover:drop-shadow-lg hover:duration-200"
-            target="_blank"
-          >
-            Check transaction
-          </a>
-        </div>
-      )}
       {error && (
         <div className="px-2 py-1 mx-auto text-xs text-red-700 bg-red-100 rounded w-fit">
           {error.error?.message || error?.message}
