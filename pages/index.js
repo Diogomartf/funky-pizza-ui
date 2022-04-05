@@ -47,7 +47,7 @@ export default function Home() {
               title="Estimated Mint Value (ETH)"
               text="0.0522"
             />
-            <ProjectTomatoCard title="Launch Date" text="Mar" />
+            <ProjectTomatoCard title="Launch Date" text="22 May" />
           </div>
         </div>
         <About />
