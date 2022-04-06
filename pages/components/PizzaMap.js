@@ -36,7 +36,7 @@ const PizzaMap = () => (
               />
               <PizzaMapPhases
                 title="Serving"
-                description="Launch our 2205 collectible pizzas. Aiming for early March."
+                description="Launch our 2205 collectible pizzas. On the Bitcoin pizza day, 22/05/2022."
               />
               <PizzaMapPhases
                 title="Eating"
