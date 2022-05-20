@@ -9,7 +9,7 @@ const About = () => (
     <div className="max-w-3xl space-y-6 text-xl font-bold lg:text-3xl text-darkRed">
       <p className="md:leading-9">
         In May 22, 2010, Laszlo agreed to pay 10,000 Bitcoins for two{" "}
-        <span className="text-orangeCrust">pizzas</span> . Making the first
+        <span className="text-orangeCrust">pizzas</span>. Making the first
         Bitcoin commercial transaction.
       </p>
       <p className="md:leading-9">
@@ -17,6 +17,7 @@ const About = () => (
         commemoration,{" "}
         <span className="text-orangeCrust">Bitcoin Pizza Day</span>!
       </p>
+      <p className="md:leading-9">This was a pivotal moment for crypto.</p>
       <p className="md:leading-9">
         As we want to celebrate this moment, it only makes sense to launch on
         this historic date: <span className="text-orangeCrust">22/05/2022</span>
@@ -35,7 +36,7 @@ const About = () => (
       </p>
       <p className="md:leading-9">
         By owning Funky Pizza you can be part of the community and decide the
-        project future. We will make Funky Pizza part of the
+        project future. We will make Funky Pizza part of the{" "}
         <span className="text-orangeCrust">pizza</span> culture.
       </p>
       <p className="md:leading-9">
