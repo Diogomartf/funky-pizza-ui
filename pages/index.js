@@ -33,8 +33,8 @@ export default function Home() {
       <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
       <Hero isOpen={isOpen} />
       <About />
-      <PizzaMap />
       <Team />
+      <PizzaMap />
       <Footer />
     </div>
   );

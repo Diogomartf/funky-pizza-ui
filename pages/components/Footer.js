@@ -7,7 +7,7 @@ const Footer = () => {
         className="w-40 md:w-56 lg:w-64"
       />
       <div className="text-sm font-bold text-right text-darkRed">
-        All rights reserved @ FunkyPizza — {new Date().getFullYear()}
+        All rights reserved @ Funky Pizza — {new Date().getFullYear()}
       </div>
     </div>
   );
