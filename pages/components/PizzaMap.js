@@ -27,7 +27,7 @@ const PizzaMap = () => (
         <div className="px-5 overflow-x-auto">
           <div className="space-y-10 min-w-max lg:min-w-0 md:pr-0">
             <div className="flex items-center h-6 px-2 rounded-full bg-gradient-to-r from-yellow-500 to-orangeCrust">
-              <div className="w-1/5 h-2 bg-white rounded-full" />
+              <div className="w-1/3 h-2 bg-white rounded-full" />
             </div>
             <div className="flex justify-between space-x-24">
               <PizzaMapPhases

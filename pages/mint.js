@@ -1,22 +1,17 @@
 import { useState } from "react";
 import Head from "next/head";
-
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
-import Team from "./components/Team";
-import PizzaMap from "./components/PizzaMap";
 import MetaTags from "./components/MetaTags";
 import Favicon from "./components/Favicon";
-import About from "./components/About";
-import Hero from "./components/Hero";
+import Navbar from "./components/Navbar";
+import MintSection from "./components/MintSection";
 
-export default function Home() {
+export default function Mint() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
       <Head>
-        <title>Funky Pizza | The best pizza on the blockchain</title>
+        <title>Mint a Funky Pizza | The best pizza on the blockchain</title>
         <MetaTags />
         <Favicon />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,11 +26,7 @@ export default function Home() {
         ></link>
       </Head>
       <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
-      <Hero isOpen={isOpen} />
-      <About />
-      <Team />
-      <PizzaMap />
-      <Footer />
+      <MintSection />
     </div>
   );
 }
