@@ -70,7 +70,7 @@ export default function MintForm({
       <div className="flex items-center justify-between space-x-3 md:space-x-5">
         {isFetchingData || isPaused ? (
           <div className="w-full flex justify-center px-6 py-4 text-white uppercase rounded-full cursor-pointer bg-gradient-to-r from-orangy to-orangeCrust hover:drop-shadow-lg hover:duration-200 h-fit">
-            {isFetchingData ? "Preparing ingredients..." : "Mint Paused"}
+            {isFetchingData ? "Preparing..." : "Mint Paused"}
           </div>
         ) : (
           <>
