@@ -89,7 +89,7 @@ export default function MintCard() {
           {lastTransaction ? (
             <div className="flex items-end justify-center p-4 mx-auto bg-[url('/pizza-leds.jpeg')] shadow w-60 h-52 md:w-80 md:h-64 md:mb-0 lg:mb-0 md:p-8 rounded-xl bg-center bg-cover ">
               <a
-                href={`https://rinkeby.etherscan.io/tx/${lastTransaction.hash}`}
+                href={`https://etherscan.io/tx/${lastTransaction.hash}`}
                 className="p-2 px-4 mx-auto text-xs text-white bg-gradient-to-r from-orangy to-orangeCrust hover:drop-shadow-lg hover:duration-200 rounded-2xl"
                 target="_blank"
               >
