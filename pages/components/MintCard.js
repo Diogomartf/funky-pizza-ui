@@ -18,6 +18,8 @@ export default function MintCard() {
   const [mintPrice, setMintPrice] = useState("-");
   const [maxPerMint, setMaxPerMint] = useState(1);
   const [mintAmount, setMintAmount] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isFetchingData, setIsFetchingData] = useState(true);
   const [lastTransaction, setLastTransaction] = useState(null);
 
   const [readOnlyFunkyPizzaContract, isReadOnlyFunkyPizzaContract] =
@@ -31,16 +33,20 @@ export default function MintCard() {
   );
 
   const fetchData = async () => {
-    const [maxSupply, totalSupply, mintPrice, maxPerMint] = await Promise.all([
-      await readOnlyFunkyPizzaContract.max_supply(),
-      await readOnlyFunkyPizzaContract.totalSupply(),
-      await readOnlyFunkyPizzaContract.price(),
-      await readOnlyFunkyPizzaContract.maxPerMint(),
-    ]);
+    const [maxSupply, totalSupply, mintPrice, maxPerMint, paused] =
+      await Promise.all([
+        await readOnlyFunkyPizzaContract.max_supply(),
+        await readOnlyFunkyPizzaContract.totalSupply(),
+        await readOnlyFunkyPizzaContract.price(),
+        await readOnlyFunkyPizzaContract.maxPerMint(),
+        await readOnlyFunkyPizzaContract.paused(),
+      ]);
     setMaxSupply(maxSupply.toString());
     setTotalSupply(totalSupply.toString());
     setMintPrice(ethers.utils.formatEther(mintPrice.toString()));
     setMaxPerMint(maxPerMint.toString());
+    setIsPaused(paused);
+    setIsFetchingData(false);
   };
 
   useEffect(() => {
@@ -91,13 +97,13 @@ export default function MintCard() {
               </a>
             </div>
           ) : (
-            <div className="flex flex-col p-4 mx-auto space-y-6 bg-white border shadow md:mb-0 lg:mb-0 md:p-8 rounded-xl max-w-min min-w-min">
+            <div className="min-w-[350px] flex flex-col p-4 mx-auto space-y-6 bg-white border shadow md:mb-0 lg:mb-0 md:p-8 rounded-xl max-w-min min-w-min">
               <div className="flex justify-between text-tomato">
                 <div className="text-sm font-semibold">Mint a Funky Pizza</div>
                 <div className="text-sm font-semibold">ETH</div>
               </div>
               <div className="text-center text-7xl text-tomato md:text-8xl font-modak">
-                {mintPrice}
+                {parseInt(mintPrice, 10) === 0 ? "FREE" : mintPrice}
               </div>
               <MintForm
                 increment={increment}
@@ -108,6 +114,8 @@ export default function MintCard() {
                 mintNFT={mintNFT}
                 loading={loading}
                 error={error}
+                isPaused={isPaused}
+                isFetchingData={isFetchingData}
               />
             </div>
           )}
