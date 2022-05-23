@@ -102,8 +102,8 @@ export default function MintCard() {
                 <div className="text-sm font-semibold">Mint a Funky Pizza</div>
                 <div className="text-sm font-semibold">ETH</div>
               </div>
-              <div className="text-center text-7xl text-tomato md:text-8xl font-modak">
-                {parseInt(mintPrice, 10) === 0 ? "FREE" : mintPrice}
+              <div className="text-5xl text-center text-tomato md:text-6xl font-modak">
+                {parseFloat(mintPrice, 10) === 0 ? "FREE" : mintPrice}
               </div>
               <MintForm
                 increment={increment}

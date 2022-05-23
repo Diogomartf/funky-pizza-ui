@@ -14,7 +14,7 @@ const Hero = ({ isOpen }) => {
       <div className="flex flex-col justify-between space-y-6 overflow-auto md:space-x-4 md:space-y-0 md:flex-row">
         <ProjectTomatoCard title="Number of Pizzas" text="2205" />
         <ProjectTomatoCard title="Number of traits" text="54" />
-        <ProjectTomatoCard title="Estimated Mint Value (ETH)" text="FREE" />
+        <ProjectTomatoCard title="Estimated Mint Value (ETH)" text="0.0052" />
         <ProjectTomatoCard title="Launch Date" text="22 May" />
       </div>
     </div>
