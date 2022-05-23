@@ -66,11 +66,15 @@ export default function MintCard() {
   const [execute, loading, error] = useTransaction(funkyPizzaContract?.mint);
 
   const mintNFT = async () => {
+    console.log(mintPrice);
     if (connected && correctNetwork) {
       const transaction = await execute([
         mintAmount,
         {
-          value: ethers.utils.parseEther((mintPrice * mintAmount).toString()),
+          value:
+            mintAmount < 5
+              ? ethers.utils.parseEther((mintPrice * mintAmount).toString())
+              : ethers.utils.parseEther("0.0261"),
         },
       ]);
 
