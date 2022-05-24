@@ -1,3 +1,4 @@
+import Link from "next/link";
 import PizzaCard from "./PizzaCard";
 import ProjectTomatoCard from "./ProjectTomatoCard";
 
@@ -11,6 +12,11 @@ const Hero = ({ isOpen }) => {
           ))}
         </div>
       </div>
+      <Link href="/mint">
+        <div className="flex justify-center w-full px-6 py-4 text-3xl tracking-wide text-white uppercase cursor-pointer md:text-5xl font-modak rounded-xl bg-gradient-to-b from-orangy via-orangeCrust to-tomato hover:drop-shadow-lg hover:duration-200 h-fit">
+          mint now
+        </div>
+      </Link>
       <div className="flex flex-col justify-between space-y-6 overflow-auto md:space-x-4 md:space-y-0 md:flex-row">
         <ProjectTomatoCard title="Number of Pizzas" text="2205" />
         <ProjectTomatoCard title="Number of traits" text="54" />
