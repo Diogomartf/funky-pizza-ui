@@ -56,7 +56,7 @@ const Navbar = ({ isOpen, setIsOpen }) => {
                 Social
               </NavButton>
               {showSocial && (
-                <div className="absolute hidden p-1 bg-white rounded-full top-11 -left-2/3 md:space-x-2 md:flex md:items-center">
+                <div className="absolute hidden p-1 bg-white rounded-full top-11 -left-1/3 md:space-x-2 md:flex md:items-center">
                   <SocialLinks />
                 </div>
               )}
