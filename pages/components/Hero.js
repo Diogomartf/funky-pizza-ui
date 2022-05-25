@@ -13,7 +13,7 @@ const Hero = ({ isOpen }) => {
         </div>
       </div>
       <Link href="/mint">
-        <div className="flex justify-center w-full px-6 py-4 text-3xl tracking-wide text-white uppercase cursor-pointer md:text-5xl font-modak rounded-xl bg-gradient-to-b from-orangy via-orangeCrust to-tomato hover:drop-shadow-lg hover:duration-200 h-fit">
+        <div className="flex justify-center w-full px-6 py-4 text-3xl tracking-wide text-white uppercase rounded-full cursor-pointer md:text-5xl font-modak bg-gradient-to-b from-orangy via-orangeCrust to-tomato hover:drop-shadow-lg hover:duration-200 h-fit">
           mint now
         </div>
       </Link>
