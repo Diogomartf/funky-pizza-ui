@@ -21,7 +21,6 @@ const Hero = ({ isOpen }) => {
         <ProjectTomatoCard title="Number of Pizzas" text="2205" />
         <ProjectTomatoCard title="Number of traits" text="54" />
         <ProjectTomatoCard title="Estimated Mint Value (ETH)" text="0.0052" />
-        <ProjectTomatoCard title="Launch Date" text="22 May" />
       </div>
     </div>
   );
