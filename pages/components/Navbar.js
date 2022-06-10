@@ -48,6 +48,9 @@ const Navbar = ({ isOpen, setIsOpen }) => {
             <NavButton href="/#about" onClick={() => setIsOpen(false)}>
               About
             </NavButton>
+            <NavButton href="/#team" onClick={() => setIsOpen(false)}>
+              Team
+            </NavButton>
             <NavButton href="/#pizzamap" onClick={() => setIsOpen(false)}>
               Pizzamap
             </NavButton>

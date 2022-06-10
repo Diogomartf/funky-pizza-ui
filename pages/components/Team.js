@@ -2,7 +2,7 @@ import Image from "next/image";
 import team from "../data/team.json";
 
 const Team = () => (
-  <div className="pr-5 -mx-5 md:pr-0 lg:mx-0">
+  <div id="team" className="pr-5 -mx-5 md:pr-0 lg:mx-0">
     <div className="flex justify-between pl-5 my-24 -mr-5 space-x-5 overflow-x-auto lg:px-0 lg:pl-0 md:my-28 md:mr-0 lg:overflow-hidden horizontal-list">
       {team.map((member) => (
         <div className="flex flex-col items-center" key={member.name}>
