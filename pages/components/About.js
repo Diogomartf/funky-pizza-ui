@@ -24,13 +24,12 @@ const About = () => (
         .
       </p>
       <p className="md:leading-9">
-        We are combining our passions to create this project and this community
-        who loves <span className="text-orangeCrust">pizzas</span>, crypto and{" "}
-        tech.
+        We are combining our passions to create a project and a community who
+        loves <span className="text-orangeCrust">pizzas</span>, crypto and tech.
       </p>
 
       <p className="md:leading-9">
-        Funky Pizza is a NFT project of algorithmically generated{" "}
+        Funky Pizza is a NFT collectible of algorithmically generated{" "}
         <span className="text-orangeCrust">pizzas</span>, on the Ethereum
         blockchain.
       </p>
