@@ -1,126 +1,158 @@
-import { useState, useEffect } from "react";
-import {
-  useContract,
-  useReadOnlyContract,
-  useTransaction,
-  useWallet,
-} from "@web3-ui/hooks";
-import funkyPizzaABI from "../abi/FunkyPizza";
+import { useState } from "react";
 import { ethers } from "ethers";
+import {
+  useContractWrite,
+  useContractRead,
+  useWaitForTransaction,
+  useConnect,
+  useNetwork,
+} from "wagmi";
 
+import funkyPizzaABI from "../abi/FunkyPizza";
 import MintForm from "./MintForm";
 import LoadingOverCard from "./LoadingOvenCard";
 
 export default function MintCard() {
-  const { connected, correctNetwork } = useWallet();
-  const [maxSupply, setMaxSupply] = useState("-");
-  const [totalSupply, setTotalSupply] = useState("-");
-  const [mintPrice, setMintPrice] = useState("-");
-  const [maxPerMint, setMaxPerMint] = useState(1);
   const [mintAmount, setMintAmount] = useState(1);
-  const [isPaused, setIsPaused] = useState(false);
-  const [isFetchingData, setIsFetchingData] = useState(true);
-  const [lastTransaction, setLastTransaction] = useState(null);
+  const { isConnected } = useConnect();
+  const { activeChain } = useNetwork();
 
-  const [readOnlyFunkyPizzaContract, isReadOnlyFunkyPizzaContract] =
-    useReadOnlyContract(
-      process.env.NEXT_PUBLIC_FUNKY_PIZZA_ADDRESS,
-      funkyPizzaABI.abi
-    );
-  const [funkyPizzaContract, isReady] = useContract(
-    process.env.NEXT_PUBLIC_FUNKY_PIZZA_ADDRESS,
-    funkyPizzaABI.abi
-  );
-
-  const fetchData = async () => {
-    const [maxSupply, totalSupply, mintPrice, maxPerMint, paused] =
-      await Promise.all([
-        await readOnlyFunkyPizzaContract.max_supply(),
-        await readOnlyFunkyPizzaContract.totalSupply(),
-        await readOnlyFunkyPizzaContract.price(),
-        await readOnlyFunkyPizzaContract.maxPerMint(),
-        await readOnlyFunkyPizzaContract.paused(),
-      ]);
-    setMaxSupply(maxSupply.toString());
-    setTotalSupply(totalSupply.toString());
-    setMintPrice(ethers.utils.formatEther(mintPrice.toString()));
-    setMaxPerMint(maxPerMint.toString());
-    setIsPaused(paused);
-    setIsFetchingData(false);
+  const contractConfig = {
+    addressOrName: process.env.NEXT_PUBLIC_FUNKY_PIZZA_ADDRESS,
+    contractInterface: funkyPizzaABI.abi,
   };
 
-  useEffect(() => {
-    if (
-      isReadOnlyFunkyPizzaContract &&
-      readOnlyFunkyPizzaContract &&
-      Object.entries(readOnlyFunkyPizzaContract).length > 0
-    ) {
-      fetchData();
+  const { data: price, isSuccess: isPriceSuccess } = useContractRead(
+    contractConfig,
+    "price",
+    {
+      watch: true,
     }
-  }, [readOnlyFunkyPizzaContract]);
+  );
+
+  const { data: totalSupply, isSuccess: isTotalSupplySuccess } =
+    useContractRead(contractConfig, "totalSupply", {
+      watch: true,
+    });
+
+  const { data: max_supply } = useContractRead(contractConfig, "max_supply");
+
+  const { data: maxPerMint } = useContractRead(contractConfig, "maxPerMint", {
+    watch: true,
+  });
+
+  const { data: paused } = useContractRead(contractConfig, "paused", {
+    watch: true,
+  });
 
   const increment = () =>
     mintAmount < maxPerMint && setMintAmount(mintAmount + 1);
   const decrement = () => mintAmount > 1 && setMintAmount(mintAmount - 1);
 
-  const [execute, loading, error] = useTransaction(funkyPizzaContract?.mint);
+  const mintValue = () =>
+    isPriceSuccess && mintAmount < 5
+      ? price.mul(mintAmount)
+      : ethers.utils.parseEther("0.0261");
 
-  const mintNFT = async () => {
-    console.log(mintPrice);
-    if (connected && correctNetwork) {
-      const transaction = await execute([
-        mintAmount,
-        {
-          value:
-            mintAmount < 5
-              ? ethers.utils.parseEther((mintPrice * mintAmount).toString())
-              : ethers.utils.parseEther("0.0261"),
-        },
-      ]);
+  const {
+    data: mintData,
+    write: mintNFT,
+    isLoading: isMintLoading,
+    isSuccess: isMintStarted,
+    error: mintError,
+  } = useContractWrite(contractConfig, "mint", {
+    args: mintAmount,
+    overrides: {
+      value: mintValue(),
+    },
+  });
 
-      if (!transaction.code) {
-        setLastTransaction(transaction);
-      }
-    }
+  const {
+    data: mintedData,
+    isSuccess: isMinted,
+    error: txError,
+  } = useWaitForTransaction({
+    hash: mintData?.hash,
+  });
+
+  const priceFormated = (price) => {
+    let etherPrice = ethers.utils.formatUnits(price, 18);
+    return parseFloat(etherPrice, 10);
   };
+
+  const soldOut = isTotalSupplySuccess && totalSupply.gte(max_supply);
+
+  const tokenId = () => parseInt(mintedData.logs[0].topics[3]);
+
+  const etherscanUrl = () =>
+    activeChain.id === 1
+      ? `https://etherscan.io/tx/${mintData.hash}`
+      : `https://rinkeby.etherscan.io/tx/${mintData.hash}`;
+
+  const openseaUrl = () =>
+    activeChain.id === 1
+      ? `https://opensea.io/assets/${mintData?.to}/${tokenId()}`
+      : `https://testnets.opensea.io/assets/rinkeby/${
+          mintData?.to
+        }/${tokenId()}`;
 
   return (
     <div>
-      {loading ? (
+      {isMintLoading ? (
         <LoadingOverCard></LoadingOverCard>
       ) : (
         <div>
-          {lastTransaction ? (
-            <div className="flex items-end justify-center p-4 mx-auto bg-[url('/pizza-leds.jpeg')] shadow w-60 h-52 md:w-80 md:h-64 md:mb-0 lg:mb-0 md:p-8 rounded-xl bg-center bg-cover ">
+          {isMintStarted ? (
+            <div className="flex flex-col space-y-2 items-end justify-end p-4 mx-auto bg-[url('/pizza-leds.jpeg')] shadow w-60 h-52 md:w-80 md:h-64 md:mb-0 lg:mb-0 md:p-8 rounded-xl bg-center bg-cover ">
               <a
-                href={`https://etherscan.io/tx/${lastTransaction.hash}`}
+                href={etherscanUrl()}
                 className="p-2 px-4 mx-auto text-xs text-white bg-gradient-to-r from-orangy to-orangeCrust hover:drop-shadow-lg hover:duration-200 rounded-2xl"
                 target="_blank"
               >
                 Check transaction
               </a>
+
+              {isMinted && (
+                <a
+                  className="p-2 px-4 mx-auto text-xs text-white bg-gradient-to-b from-teal-500 to-blue-500 hover:drop-shadow-lg hover:duration-200 rounded-2xl"
+                  href={openseaUrl()}
+                  target="_blank"
+                >
+                  Check on Opensea
+                </a>
+              )}
             </div>
           ) : (
-            <div className="min-w-[350px] flex flex-col p-4 mx-auto space-y-6 bg-white border shadow md:mb-0 lg:mb-0 md:p-8 rounded-xl max-w-min min-w-min">
+            <div className="min-w-[350px] flex flex-col p-4 mx-auto space-y-6 bg-white border shadow md:mb-0 lg:mb-0 md:p-8 rounded-xl max-w-min">
               <div className="flex justify-between text-tomato">
                 <div className="text-sm font-semibold">Mint a Funky Pizza</div>
                 <div className="text-sm font-semibold">ETH</div>
               </div>
               <div className="text-5xl text-center text-tomato md:text-6xl font-modak">
-                {parseFloat(mintPrice, 10) === 0 ? "FREE" : mintPrice}
+                {soldOut
+                  ? "No more pizza 🍕"
+                  : isPriceSuccess && priceFormated(price)}
               </div>
-              <MintForm
-                increment={increment}
-                decrement={decrement}
-                mintAmount={mintAmount}
-                mintPrice={mintPrice}
-                maxPerMint={maxPerMint}
-                mintNFT={mintNFT}
-                loading={loading}
-                error={error}
-                isPaused={isPaused}
-                isFetchingData={isFetchingData}
-              />
+              {!soldOut ? (
+                <MintForm
+                  mintNFT={mintNFT}
+                  error={mintError}
+                  loading={isMintLoading}
+                  mintAmount={mintAmount}
+                  increment={increment}
+                  decrement={decrement}
+                  isPaused={paused}
+                  isConnected={isConnected}
+                />
+              ) : (
+                <a
+                  href="https://opensea.io/collection/funky-pizza"
+                  target="_blank"
+                  className="text-sm text-center text-blue-600 hover:underline"
+                >
+                  Check Funky Pizza on Opensea
+                </a>
+              )}
             </div>
           )}
         </div>
