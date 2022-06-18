@@ -8,7 +8,7 @@ import {
   useNetwork,
 } from "wagmi";
 
-import funkyPizzaABI from "../abi/FunkyPizza";
+import { contractConfig } from "../contractConfig";
 import MintForm from "./MintForm";
 import LoadingOverCard from "./LoadingOvenCard";
 
@@ -17,72 +17,9 @@ export default function MintCard() {
   const { isConnected } = useConnect();
   const { activeChain } = useNetwork();
 
-  const contractConfig = {
-    addressOrName: process.env.NEXT_PUBLIC_FUNKY_PIZZA_ADDRESS,
-    contractInterface: funkyPizzaABI.abi,
-  };
-
-  const { data: price, isSuccess: isPriceSuccess } = useContractRead(
-    contractConfig,
-    "price",
-    {
-      watch: true,
-    }
-  );
-
-  const { data: totalSupply, isSuccess: isTotalSupplySuccess } =
-    useContractRead(contractConfig, "totalSupply", {
-      watch: true,
-    });
-
-  const { data: max_supply } = useContractRead(contractConfig, "max_supply");
-
-  const { data: maxPerMint } = useContractRead(contractConfig, "maxPerMint", {
-    watch: true,
-  });
-
-  const { data: paused } = useContractRead(contractConfig, "paused", {
-    watch: true,
-  });
-
   const increment = () =>
     mintAmount < maxPerMint && setMintAmount(mintAmount + 1);
   const decrement = () => mintAmount > 1 && setMintAmount(mintAmount - 1);
-
-  const mintValue = () =>
-    isPriceSuccess && mintAmount < 5
-      ? price.mul(mintAmount)
-      : ethers.utils.parseEther("0.0261");
-
-  const {
-    data: mintData,
-    write: mintNFT,
-    isLoading: isMintLoading,
-    isSuccess: isMintStarted,
-    error: mintError,
-  } = useContractWrite(contractConfig, "mint", {
-    args: mintAmount,
-    overrides: {
-      value: mintValue(),
-    },
-  });
-
-  const {
-    data: mintedData,
-    isSuccess: isMinted,
-    error: txError,
-  } = useWaitForTransaction({
-    hash: mintData?.hash,
-  });
-
-  const priceFormated = (price) => {
-    let etherPrice = ethers.utils.formatUnits(price, 18);
-    return parseFloat(etherPrice, 10);
-  };
-
-  const soldOut = isTotalSupplySuccess && totalSupply.gte(max_supply);
-
-  const tokenId = () => parseInt(mintedData.logs[0].topics[3]);
 
   const etherscanUrl = () =>
     activeChain.id === 1
@@ -95,6 +32,47 @@ export default function MintCard() {
       : `https://testnets.opensea.io/assets/rinkeby/${
           mintData?.to
         }/${tokenId()}`;
+
+  const { data: max_supply } = useContractRead(contractConfig, "max_supply");
+  const { data: maxPerMint } = useContractRead(contractConfig, "maxPerMint");
+  const { data: paused } = useContractRead(contractConfig, "paused");
+  const { data: price, isSuccess: isPriceSuccess } = useContractRead(
+    contractConfig,
+    "price",
+    {
+      watch: true,
+    }
+  );
+  const { data: totalSupply, isSuccess: isTotalSupplySuccess } =
+    useContractRead(contractConfig, "totalSupply", {
+      watch: true,
+    });
+
+  const {
+    data: mintData,
+    write: mintNFT,
+    isLoading: isMintLoading,
+    isSuccess: isMintStarted,
+    error: mintError,
+  } = useContractWrite(contractConfig, "mint", {
+    args: mintAmount,
+    overrides: {
+      value: isPriceSuccess && price.mul(mintAmount),
+    },
+  });
+
+  const {
+    data: mintedData,
+    isSuccess: isMinted,
+    error: txError,
+  } = useWaitForTransaction({
+    hash: mintData?.hash,
+  });
+
+  const soldOut = isTotalSupplySuccess && totalSupply.gte(max_supply);
+  const tokenId = () => parseInt(mintedData.logs[0].topics[3]);
+
+  txError && console.log("txError:", txError);
 
   return (
     <div>
@@ -131,7 +109,9 @@ export default function MintCard() {
               <div className="text-5xl text-center text-tomato md:text-6xl font-modak">
                 {soldOut
                   ? "No more pizza 🍕"
-                  : isPriceSuccess && priceFormated(price)}
+                  : price
+                  ? ethers.utils.formatEther(price)
+                  : "0.00522"}
               </div>
               {!soldOut ? (
                 <MintForm
@@ -150,7 +130,7 @@ export default function MintCard() {
                   target="_blank"
                   className="text-sm text-center text-blue-600 hover:underline"
                 >
-                  Check Funky Pizza on Opensea
+                  Check on Opensea
                 </a>
               )}
             </div>
