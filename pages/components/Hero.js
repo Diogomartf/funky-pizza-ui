@@ -14,10 +14,7 @@ const Hero = ({ isOpen }) => {
 
   const { data: price, isSuccess: isPriceSuccess } = useContractRead(
     contractConfig,
-    "price",
-    {
-      watch: true,
-    }
+    "price"
   );
 
   return (

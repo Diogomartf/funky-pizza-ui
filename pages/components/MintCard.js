@@ -38,10 +38,7 @@ export default function MintCard() {
   const { data: paused } = useContractRead(contractConfig, "paused");
   const { data: price, isSuccess: isPriceSuccess } = useContractRead(
     contractConfig,
-    "price",
-    {
-      watch: true,
-    }
+    "price"
   );
   const { data: totalSupply, isSuccess: isTotalSupplySuccess } =
     useContractRead(contractConfig, "totalSupply", {

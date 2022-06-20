@@ -12,7 +12,7 @@ import { infuraProvider } from "wagmi/providers/infura";
 import { publicProvider } from "wagmi/providers/public";
 
 const { chains, provider } = configureChains(
-  [chain.mainnet, chain.rinkeby],
+  [chain.mainnet],
   [
     infuraProvider({ infuraId: process.env.NEXT_PUBLIC_INFURIA_KEY }),
     publicProvider(),
