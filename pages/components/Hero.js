@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { useContractRead } from "wagmi";
 import { ethers } from "ethers";
+import { useContractRead } from "wagmi";
 
 import PizzaCard from "./PizzaCard";
 import ProjectTomatoCard from "./ProjectTomatoCard";
