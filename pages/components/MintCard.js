@@ -8,9 +8,9 @@ import {
   useNetwork,
 } from "wagmi";
 
-import { contractConfig } from "../contractConfig";
 import MintForm from "./MintForm";
 import LoadingOverCard from "./LoadingOvenCard";
+import { contractConfig } from "../../contractConfig";
 
 export default function MintCard() {
   const [mintAmount, setMintAmount] = useState(1);

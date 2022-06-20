@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { useContractRead } from "wagmi";
+import { ethers } from "ethers";
+
 import PizzaCard from "./PizzaCard";
 import ProjectTomatoCard from "./ProjectTomatoCard";
-import { contractConfig } from "../contractConfig";
-import { ethers } from "ethers";
+import { contractConfig } from "../../contractConfig";
 
 const Hero = ({ isOpen }) => {
   const { data: totalSupply, isSuccess: isTotalSupplySuccess } =
