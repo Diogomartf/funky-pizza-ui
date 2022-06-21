@@ -6,11 +6,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@rainbow-me/rainbowkit": "^0.2.4",
     "@web3-ui/hooks": "^0.9.0",
-    "ethers": "^5.5.3",
-    "next": "latest",
+    "ethers": "^5.6.8",
+    "next": "^12.1.6",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "sharp": "^0.30.6",
+    "wagmi": "^0.4.12"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
