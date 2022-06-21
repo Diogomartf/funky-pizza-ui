@@ -66,7 +66,7 @@ export default function MintCard() {
     hash: mintData?.hash,
   });
 
-  const soldOut = isTotalSupplySuccess && totalSupply.gte(max_supply);
+  const soldOut = isTotalSupplySuccess && totalSupply?.gte(max_supply);
   const tokenId = () => parseInt(mintedData.logs[0].topics[3]);
 
   txError && console.log("txError:", txError);
