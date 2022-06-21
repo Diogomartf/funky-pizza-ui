@@ -1,22 +1,8 @@
 import Link from "next/link";
-import { ethers } from "ethers";
-import { useContractRead } from "wagmi";
-
 import PizzaCard from "./PizzaCard";
 import ProjectTomatoCard from "./ProjectTomatoCard";
-import { contractConfig } from "../../contractConfig";
 
 const Hero = ({ isOpen }) => {
-  const { data: totalSupply, isSuccess: isTotalSupplySuccess } =
-    useContractRead(contractConfig, "totalSupply", {
-      watch: true,
-    });
-
-  const { data: price, isSuccess: isPriceSuccess } = useContractRead(
-    contractConfig,
-    "price"
-  );
-
   return (
     <div className={`space-y-12 ${isOpen ? "pt-[133px] md:pt-0" : ""}`}>
       <div className="pr-5 -mx-5">
@@ -34,14 +20,7 @@ const Hero = ({ isOpen }) => {
       <div className="flex flex-col justify-between space-y-6 overflow-auto md:space-x-4 md:space-y-0 md:flex-row">
         <ProjectTomatoCard title="Number of Pizzas" text="2205" />
         <ProjectTomatoCard title="Number of traits" text="54" />
-        <ProjectTomatoCard
-          title="Mint price (ETH)"
-          text={isPriceSuccess ? ethers.utils.formatEther(price) : "0.00522"}
-        />
-        <ProjectTomatoCard
-          title="Currently minted  "
-          text={isTotalSupplySuccess ? totalSupply.toString() : "🍕🍕"}
-        />
+        <ProjectTomatoCard title="Estimated Mint Value (ETH)" text="0.0052" />
       </div>
     </div>
   );
