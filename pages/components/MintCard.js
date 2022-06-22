@@ -33,17 +33,12 @@ export default function MintCard() {
           mintData?.to
         }/${tokenId()}`;
 
-  const { data: max_supply } = useContractRead(contractConfig, "max_supply");
   const { data: maxPerMint } = useContractRead(contractConfig, "maxPerMint");
   const { data: paused } = useContractRead(contractConfig, "paused");
   const { data: price, isSuccess: isPriceSuccess } = useContractRead(
     contractConfig,
     "price"
   );
-  const { data: totalSupply, isSuccess: isTotalSupplySuccess } =
-    useContractRead(contractConfig, "totalSupply", {
-      watch: true,
-    });
 
   const {
     data: mintData,
@@ -66,7 +61,6 @@ export default function MintCard() {
     hash: mintData?.hash,
   });
 
-  const soldOut = isTotalSupplySuccess && totalSupply?.gte(max_supply);
   const tokenId = () => parseInt(mintedData.logs[0].topics[3]);
 
   txError && console.log("txError:", txError);
@@ -104,32 +98,19 @@ export default function MintCard() {
                 <div className="text-sm font-semibold">ETH</div>
               </div>
               <div className="text-5xl text-center text-tomato md:text-6xl font-modak">
-                {soldOut
-                  ? "No more pizza 🍕"
-                  : price
-                  ? ethers.utils.formatEther(price)
-                  : "0.00522"}
+                {price ? ethers.utils.formatEther(price) : "0.00522"}
               </div>
-              {!soldOut ? (
-                <MintForm
-                  mintNFT={mintNFT}
-                  error={mintError}
-                  loading={isMintLoading}
-                  mintAmount={mintAmount}
-                  increment={increment}
-                  decrement={decrement}
-                  isPaused={paused}
-                  isConnected={isConnected}
-                />
-              ) : (
-                <a
-                  href="https://opensea.io/collection/funky-pizza"
-                  target="_blank"
-                  className="text-sm text-center text-blue-600 hover:underline"
-                >
-                  Check on Opensea
-                </a>
-              )}
+
+              <MintForm
+                mintNFT={mintNFT}
+                error={mintError}
+                loading={isMintLoading}
+                mintAmount={mintAmount}
+                increment={increment}
+                decrement={decrement}
+                isPaused={paused}
+                isConnected={isConnected}
+              />
             </div>
           )}
         </div>
