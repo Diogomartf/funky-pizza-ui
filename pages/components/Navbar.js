@@ -45,6 +45,12 @@ const Navbar = ({ isOpen, setIsOpen }) => {
               !isOpen ? "hidden" : "flex space-y-8"
             } md:space-x-3 md:flex flex-col md:flex-row`}
           >
+            <NavButton
+              href="https://opensea.io/collection/funky-pizza"
+              onClick={() => setIsOpen(false)}
+            >
+              Opensea
+            </NavButton>
             <NavButton href="/#about" onClick={() => setIsOpen(false)}>
               About
             </NavButton>
