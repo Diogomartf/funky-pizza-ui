@@ -1,5 +1,6 @@
 import "tailwindcss/tailwind.css";
 import "./styles/global.css";
+import { Analytics } from "@vercel/analytics/react";
 import "@rainbow-me/rainbowkit/styles.css";
 import {
   getDefaultWallets,
@@ -45,6 +46,7 @@ function MyApp({ Component, pageProps }) {
         <div className="relative font-sans bg-beige">
           <div className="max-w-[70rem] px-5 py-1 mx-auto">
             <Component {...pageProps} />
+            <Analytics />
           </div>
         </div>
       </RainbowKitProvider>
