@@ -40,7 +40,7 @@ export default function ConnectWallet() {
                     {account.ensName ? account.ensName : account.displayName}
                   </p>
                   <div className="p-1 px-2 ml-2 rounded-full bg-tomato">
-                    <p className="font-mono text-xs text-white ">
+                    <p className="font-mono text-xs text-white whitespace-nowrap">
                       {account.displayBalance
                         ? ` ${account.displayBalance}`
                         : ""}
